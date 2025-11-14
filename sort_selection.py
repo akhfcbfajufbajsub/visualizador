@@ -25,17 +25,18 @@ def step():
           j_actual=j
           j=j+1
           return {"a": min_idx, "b": j_actual, "swap": False, "done": False}
-       Else: #   Al terminar el barrido, pasar a fase "swap".
-             fase=swap 
+       else: #   Al terminar el barrido, pasar a fase "swap".
+             fase="swap"
              return step()
     if fase== "swap":
        if min_idx !=i:
           items[i], items[min_idx]= items[min_idx], items[i] 
-          swap_unico = {"a":i, "b":min_idx, "swap":True, "done":False 
-          ****************
+          swap_unico = {"a":i, "b":min_idx, "swap":True, "done":False}
+        else: 
+            swap_unico={ "a":i, "b": min_idx, "swap": False, "done": False}
        i=i+1
        j=i+1
        min_idx=i
        fase="buscar" 
         # Cuando i llegue al final, devolvé {"done": True}.
-    return {"done": True}
+    return swap_unico 
