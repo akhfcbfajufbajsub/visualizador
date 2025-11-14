@@ -13,7 +13,7 @@ def init(vals):
     j = i + 1
     min_idx = i
     fase = "buscar"
-
+    
 def step():
      global items, n,i,j, min_idx,fase                                         
     if i>=n:
@@ -32,7 +32,7 @@ def step():
        if min_idx !=i:
           items[i], items[min_idx]= items[min_idx], items[i] 
           swap_unico = {"a":i, "b":min_idx, "swap":True, "done":False 
-          
+          ****************
        i=i+1
        j=i+1
        min_idx=i
