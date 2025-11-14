@@ -3,6 +3,10 @@
 
 items = []
 n = 0
+i=0
+j=0
+fase="x" 
+stack=[]
 # Agregá acá tus punteros/estado, p.ej.:
 # i = 0; j = 0; fase = "x"; stack = []
 
