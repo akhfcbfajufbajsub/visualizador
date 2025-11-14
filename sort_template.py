@@ -14,7 +14,9 @@ def init(vals):
     global items, n
     items = list(vals)
     n = len(items)
-    # TODO: inicializar punteros/estado
+    i=1
+    j=i
+    fase="buscar"
 
 def step():
     # TODO: implementar UN micro-paso de tu algoritmo y devolver el dict.
