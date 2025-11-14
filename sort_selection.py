@@ -37,4 +37,5 @@ def step():
        j=i+1
        min_idx=i
        fase="buscar" 
-       return swap_unico 
+        # Cuando i llegue al final, devolvé {"done": True}.
+    return {"done": True}
