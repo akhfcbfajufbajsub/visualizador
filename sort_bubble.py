@@ -1,22 +1,18 @@
 def init(vals):
-    return {
-        "items": list(vals),
-        "n": len(vals),
-        "i": 0,
-        "j": 0
-    }
+    step.items = list(vals)
+    step.n = len(step.items)
+    step.i = 0
+    step.j = 0
 
-def step(state):
-    items = state["items"]
-    n = state["n"]
-    i = state["i"]
-    j = state["j"]
-    
-    # Si ya terminó
+def step():
+    items = step.items
+    n = step.n
+    i = step.i
+    j = step.j
+
     if i >= n - 1:
-        return {"done": True, "state": state}
+        return {"done": True}
 
-    # Par a comparar
     a = j
     b = j + 1
     swap = False
@@ -26,21 +22,13 @@ def step(state):
         items[a], items[b] = items[b], items[a]
         swap = True
 
-    # Avanzar punteros
+    # Avanzar
     j += 1
     if j >= n - 1 - i:
         i += 1
         j = 0
 
-    # Guardar punteros actualizados en el estado
-    state["i"] = i
-    state["j"] = j
+    step.i = i
+    step.j = j
 
-    return {
-        "a": a,
-        "b": b,
-        "swap": swap,
-        "done": False,
-        "state": state
-    }
-
+    return {"a": a, "b": b, "swap": swap, "done": False}
