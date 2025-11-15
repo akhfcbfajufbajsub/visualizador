@@ -10,6 +10,7 @@ def step():
     i = step.i
     j = step.j
 
+    # Fin del algoritmo
     if i >= n - 1:
         return {"done": True}
 
@@ -22,7 +23,7 @@ def step():
         items[a], items[b] = items[b], items[a]
         swap = True
 
-    # Avanzar
+    # Avanzar punteros
     j += 1
     if j >= n - 1 - i:
         i += 1
