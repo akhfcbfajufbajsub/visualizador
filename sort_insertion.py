@@ -10,17 +10,17 @@ def step():
     i = step.i
     j = step.j
 
-    # Terminado
+    # Si terminó
     if i >= n:
         return {"done": True}
 
-    # Empezar desplazamiento:
+    # Iniciar desplazamiento del elemento en posición i
     if j is None:
         j = i
         step.j = j
         return {"a": j-1, "b": j, "swap": False, "done": False}
 
-    # Desplazar 1 posición hacia la izquierda
+    # Hacer un swap si corresponde
     if j > 0 and items[j-1] > items[j]:
         a = j-1
         b = j
@@ -29,8 +29,7 @@ def step():
         step.j = j
         return {"a": a, "b": b, "swap": True, "done": False}
 
-    # No queda más desplazamiento → pasar al siguiente i
+    # No hay más desplazamientos → avanzar i
     step.i = i + 1
     step.j = None
     return {"a": None, "b": None, "swap": False, "done": False}
-
