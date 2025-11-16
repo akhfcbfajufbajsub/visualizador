@@ -16,9 +16,27 @@ def init(vals):
     fase="buscar"
 
 def step():
-    # TODO: implementar UN micro-paso de tu algoritmo y devolver el dict.
-    # Recordá:
-    # - a, b dentro de [0, n-1]
-    # - si swap=True, primero hacé el intercambio en 'items'
-    # - cuando termines, devolvé {"done": True}
-    return {"done": True}
+    global items, n, i, j, fase
+    if i >= n:
+        return {"done": True}
+    if fase == "buscar":
+        if items[j] < items[j-1]:
+            fase = "insertar"
+            return step()
+        else:
+            i += 1
+            j = i
+            return {"a": j-1, "b": j, "swap": False, "done": False}
+        if fase == "insertar":
+
+        if j > 0 and items[j] < items[j-1]:
+            items[j], items[j-1] = items[j-1], items[j]
+            result = {"a": j, "b": j-1, "swap": True, "done": False}
+            j -= 1
+            return result
+        else:
+            i += 1
+            j = i
+            fase = "buscar"
+            return {"a": j-1, "b": j, "swap": False, "done": False}
+
