@@ -1,5 +1,5 @@
 Integrantes: 
-
+Lautaro           Usuario en Githup: akhfcbfajufbajsub
 Pilar Barrionuevo. Usuario en Githup: 2007-pilar
 **Notas de implementacion:** 
  #Algoritmos implementados: Bubble Sort, Selection Sort, Insertion Sort.
