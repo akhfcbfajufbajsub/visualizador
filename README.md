@@ -1,6 +1,6 @@
 Integrantes: 
 
-Pilar Barrionuevo. Usuario en Githup: pili2007
+Pilar Barrionuevo. Usuario en Githup: 2007-pilar
 **Notas de implementacion:** 
  #Algoritmos implementados: Bubble Sort, Selection Sort, Insertion Sort.
  #Contrato respetado: cada algoritmo cumple con `init(vals)` y `step()`
