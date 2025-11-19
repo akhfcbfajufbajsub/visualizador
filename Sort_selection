@@ -1,9 +1,3 @@
-items = []
-n = 0
-i = 0
-j = 0
-fase = "buscar"
-
 def init(vals):
     global items, n, i, j, fase
     items = list(vals)
