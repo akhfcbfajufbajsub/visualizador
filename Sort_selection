@@ -1,0 +1,65 @@
+items = []
+n = 0
+i = 0
+j = 0
+fase = "buscar"
+
+def init(vals):
+    global items, n, i, j, fase
+    items = list(vals)
+    n = len(items)
+    i = 1
+    j = i
+    fase = "buscar"
+
+def step():
+    global items, n, i, j, fase
+
+    # Si ya está ordenado o vacío
+    if i >= n:
+        return {"a": -1, "b": -1, "swap": False, "done": True}
+
+    # Fase de buscar: comprobar si el elemento en j necesita ser insertado antes
+    if fase == "buscar":
+        # indices a reportar para la comparación
+        a = j - 1
+        b = j
+        # seguridad por si j es 0 (no debería pasar porque i >= 1)
+        if a < 0 or b >= n:
+            # avanzar a siguiente
+            i += 1
+            j = i
+            return {"a": -1, "b": -1, "swap": False, "done": False}
+
+        if items[j] < items[j - 1]:
+            # comenzar fase de inserción
+            fase = "insertar"
+            # proceder inmediatamente a insertar (realiza el swap en esta misma llamada)
+            return step()
+        else:
+            # no hace falta insertar, avanzar al siguiente elemento
+            i += 1
+            j = i
+            return {"a": a, "b": b, "swap": False, "done": False}
+
+    # Fase de insertar: desplazar hacia la izquierda mientras sea necesario
+    if fase == "insertar":
+        if j > 0 and items[j] < items[j - 1]:
+            # realizar un swap atómico entre j y j-1
+            items[j], items[j - 1] = items[j - 1], items[j]
+            result = {"a": j, "b": j - 1, "swap": True, "done": False}
+            j -= 1
+            # si aún hay que comparar más a la izquierda, mantener fase "insertar"
+            # si j llega a 0, la siguiente llamada comprobará y saldrá de la fase si procede
+            return result
+        else:
+            # ya no se necesita insertar, volver a buscar el siguiente elemento
+            i += 1
+            j = i
+            fase = "buscar"
+            # reportar la comparación que finalizó la inserción (o un paso neutro)
+            a = j - 1
+            b = j
+            if a < 0 or b >= n:
+                return {"a": -1, "b": -1, "swap": False, "done": False}
+            return {"a": a, "b": b, "swap": False, "done": False}
