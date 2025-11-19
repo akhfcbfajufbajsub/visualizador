@@ -8,7 +8,7 @@ j=0
 fase="buscar"
 
 def init(vals):
-    global items, n
+    global items, n, i, j, fase
     items = list(vals)
     n = len(items)
     i=1
@@ -18,17 +18,18 @@ def init(vals):
 def step():
     global items, n, i, j, fase
     if i >= n:
-        return {"done": True}
+        return {"a": -1, "b": -1, "swap": False, "done": True}
     if fase == "buscar":
         if items[j] < items[j-1]:
             fase = "insertar"
             return step()
         else:
-            i += 1
+            i= i+1
             j = i
             return {"a": j-1, "b": j, "swap": False, "done": False}
+       
         if fase == "insertar":
-
+            
         if j > 0 and items[j] < items[j-1]:
             items[j], items[j-1] = items[j-1], items[j]
             result = {"a": j, "b": j-1, "swap": True, "done": False}
